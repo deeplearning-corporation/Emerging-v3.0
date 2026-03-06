@@ -31,7 +31,7 @@ cl /EHsc lexer.cpp /Feemerging-lexer.exe
 
 ## 下载安装程序（Setup）
 在此 GitHub 仓库点击 Releases → 标签 v3.0 → 下载 Emerging-Setup-x64.exe
-下载完成运行，再按照步骤安装
+先下载，再按照步骤安装
 
 ## 许可证
 本项目使用 MIT 许可证 MIT License（麻省理工学院）
