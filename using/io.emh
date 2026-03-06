@@ -1,0 +1,74 @@
+// io.emh
+// Emerging Input/Output Header
+// Version 3.0
+// 使用: using "io.emh"
+
+import "iostream.emh"
+import "system.emh"
+
+// 文件操作
+namespace file {
+    // 文件模式
+    const READ = 1
+    const WRITE = 2
+    const APPEND = 4
+    const BINARY = 8
+    
+    // 文件结构
+    struct File {
+        handle handle
+        string path
+        uint32 mode
+        uint32 position
+        uint32 size
+    }
+    
+    // 文件操作
+    function open(string path, uint32 mode) -> File
+    function close(File file) -> void
+    function read(File file, byte[] buffer, uint32 count) -> uint32
+    function write(File file, byte[] buffer, uint32 count) -> uint32
+    function seek(File file, int32 offset, uint32 origin) -> bool
+    function tell(File file) -> uint32
+    function eof(File file) -> bool
+    function flush(File file) -> void
+    
+    // 便捷函数
+    function readAll(string path) -> string
+    function writeAll(string path, string content) -> bool
+    function appendAll(string path, string content) -> bool
+}
+
+// 二进制读写
+namespace binary {
+    // 二进制读写
+    function readByte(File file) -> byte
+    function readShort(File file) -> short
+    function readInt(File file) -> int
+    function readLong(File file) -> long
+    function readFloat(File file) -> float
+    function readDouble(File file) -> double
+    
+    function writeByte(File file, byte value) -> void
+    function writeShort(File file, short value) -> void
+    function writeInt(File file, int value) -> void
+    function writeLong(File file, long value) -> void
+    function writeFloat(File file, float value) -> void
+    function writeDouble(File file, double value) -> void
+}
+
+// 缓冲区操作
+namespace buffer {
+    struct Buffer {
+        byte[] data
+        uint32 position
+        uint32 capacity
+    }
+    
+    function create(uint32 size) -> Buffer
+    function from(byte[] data) -> Buffer
+    function write(Buffer buf, byte[] data) -> uint32
+    function read(Buffer buf, byte[] data) -> uint32
+    function reset(Buffer buf) -> void
+    function clear(Buffer buf) -> void
+}

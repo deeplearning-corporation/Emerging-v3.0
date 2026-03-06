@@ -1,0 +1,85 @@
+// system.emh
+// Emerging System Header
+// Version 3.0
+// 使用: using "system.emh"
+
+// 系统类型定义
+type byte    = unsigned char
+type word    = unsigned short
+type dword   = unsigned int
+type qword   = unsigned long long
+
+type int8    = signed char
+type int16   = short
+type int32   = int
+type int64   = long long
+
+type uint8   = unsigned char
+type uint16  = unsigned short
+type uint32  = unsigned int
+type uint64  = unsigned long long
+
+type size_t  = uint32
+type handle  = uint32
+
+// 系统信息结构
+struct SystemInfo {
+    string os_name
+    string os_version
+    string computer_name
+    string user_name
+    uint32 memory_total
+    uint32 memory_free
+    uint32 memory_used
+    uint32 cpu_cores
+    uint32 cpu_speed
+    uint32 uptime
+}
+
+// 进程信息结构
+struct ProcessInfo {
+    uint32 pid
+    string name
+    string path
+    uint32 memory_used
+    uint32 cpu_usage
+    uint32 thread_count
+    handle handle
+}
+
+// 系统函数
+function system_info() -> SystemInfo
+function system_version() -> string
+function system_about() -> void
+function system_exec(string program) -> int
+function system_exec(string program, string[] args) -> int
+function system_beep(uint32 freq, uint32 duration) -> void
+function system_reboot() -> void
+function system_shutdown() -> void
+function system_sleep(uint32 milliseconds) -> void
+
+// 进程管理
+function process_list() -> ProcessInfo[]
+function process_find(string name) -> ProcessInfo
+function process_kill(uint32 pid) -> bool
+function process_start(string path) -> uint32
+function process_wait(uint32 pid) -> int
+
+// 环境变量
+function env_get(string name) -> string
+function env_set(string name, string value) -> void
+function env_list() -> string[]
+
+// 文件系统
+function file_exists(string path) -> bool
+function file_delete(string path) -> bool
+function file_copy(string src, string dst) -> bool
+function file_move(string src, string dst) -> bool
+function file_size(string path) -> uint32
+function file_create(string path) -> bool
+
+// 目录操作
+function dir_create(string path) -> bool
+function dir_delete(string path) -> bool
+function dir_exists(string path) -> bool
+function dir_list(string path) -> string[]

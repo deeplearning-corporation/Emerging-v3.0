@@ -1,0 +1,72 @@
+// string.emh
+// Emerging String Handling Header
+// Version 3.0
+// 使用: using "string.emh"
+
+import "memory.emh"
+
+// 字符串构建器
+struct StringBuilder {
+    char[] buffer
+    uint32 length
+    uint32 capacity
+}
+
+function StringBuilder() -> StringBuilder
+function StringBuilder(uint32 capacity) -> StringBuilder
+function StringBuilder(string str) -> StringBuilder
+
+function append(StringBuilder sb, string str) -> void
+function append(StringBuilder sb, int num) -> void
+function append(StringBuilder sb, char c) -> void
+function appendLine(StringBuilder sb) -> void
+function appendLine(StringBuilder sb, string str) -> void
+function toString(StringBuilder sb) -> string
+function clear(StringBuilder sb) -> void
+function length(StringBuilder sb) -> uint32
+
+// 字符串操作
+function length(string str) -> uint32
+function copy(string str) -> string
+function concat(string s1, string s2) -> string
+function concat(string[] strs) -> string
+function substring(string str, uint32 start) -> string
+function substring(string str, uint32 start, uint32 length) -> string
+function replace(string str, string old, string new) -> string
+function trim(string str) -> string
+function trimStart(string str) -> string
+function trimEnd(string str) -> string
+function toUpper(string str) -> string
+function toLower(string str) -> string
+
+// 字符串查找
+function indexOf(string str, string search) -> int32
+function lastIndexOf(string str, string search) -> int32
+function contains(string str, string search) -> bool
+function startsWith(string str, string prefix) -> bool
+function endsWith(string str, string suffix) -> bool
+
+// 字符串分割
+function split(string str, string delimiter) -> string[]
+function split(string str, string delimiter, uint32 limit) -> string[]
+
+// 字符串转换
+function toInt(string str) -> int32
+function toUint(string str) -> uint32
+function toLong(string str) -> int64
+function toFloat(string str) -> float
+function toDouble(string str) -> double
+function toBool(string str) -> bool
+
+// 字符串格式化
+function format(string format, ...) -> string
+function padLeft(string str, uint32 width, char pad) -> string
+function padRight(string str, uint32 width, char pad) -> string
+
+// 字符判断
+function isDigit(char c) -> bool
+function isLetter(char c) -> bool
+function isLetterOrDigit(char c) -> bool
+function isWhiteSpace(char c) -> bool
+function isUpper(char c) -> bool
+function isLower(char c) -> bool

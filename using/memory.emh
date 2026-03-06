@@ -1,0 +1,74 @@
+// memory.emh
+// Emerging Memory Management Header
+// Version 3.0
+// 使用: using "memory.emh"
+
+import "system.emh"
+
+// 内存信息
+struct MemoryInfo {
+    uint32 total
+    uint32 free
+    uint32 used
+    uint32 largest_free
+    uint32 allocation_count
+    uint32 free_count
+    uint32 heap_size
+}
+
+// 内存块信息
+struct MemoryBlock {
+    ptr address
+    uint32 size
+    bool used
+    string description
+}
+
+// 内存分配
+function malloc(uint32 size) -> ptr
+function calloc(uint32 count, uint32 size) -> ptr
+function realloc(ptr p, uint32 new_size) -> ptr
+function free(ptr p) -> void
+
+// 内存操作
+function memcpy(ptr dest, ptr src, uint32 size) -> ptr
+function memmove(ptr dest, ptr src, uint32 size) -> ptr
+function memset(ptr dest, byte value, uint32 size) -> ptr
+function memcmp(ptr p1, ptr p2, uint32 size) -> int
+function memchr(ptr p, byte value, uint32 size) -> ptr
+
+// 内存信息
+function memory_info() -> MemoryInfo
+function memory_blocks() -> MemoryBlock[]
+function memory_dump() -> void
+function memory_check(ptr p) -> bool
+
+// 内存池
+struct MemoryPool {
+    ptr start
+    uint32 size
+    uint32 used
+    uint32 block_size
+}
+
+function pool_create(uint32 size, uint32 block_size) -> MemoryPool
+function pool_alloc(MemoryPool pool) -> ptr
+function pool_free(MemoryPool pool, ptr p) -> void
+function pool_reset(MemoryPool pool) -> void
+function pool_info(MemoryPool pool) -> MemoryInfo
+
+// 虚拟内存
+function vmalloc(uint32 size) -> ptr
+function vfree(ptr p, uint32 size) -> void
+function vprotect(ptr p, uint32 size, uint32 flags) -> bool
+
+// 物理内存（用于操作系统开发）
+namespace physical {
+    function init(ptr start, uint32 size) -> void
+    function alloc_page() -> ptr
+    function free_page(ptr page) -> void
+    function alloc_blocks(uint32 count) -> ptr
+    function free_blocks(ptr p, uint32 count) -> void
+    function map(ptr phys, ptr virt, uint32 flags) -> bool
+    function unmap(ptr virt) -> void
+}

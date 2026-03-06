@@ -1,0 +1,118 @@
+// math.emh
+// Emerging Mathematics Header
+// Version 3.0
+// 使用: using "math.emh"
+
+// 数学常量
+const PI = 3.14159265358979323846
+const E = 2.71828182845904523536
+const DEG2RAD = 0.01745329251994329577
+const RAD2DEG = 57.2957795130823208768
+const INFINITY = 1e308
+const NAN = 0/0
+
+// 基本数学函数
+function abs(int x) -> int
+function abs(float x) -> float
+function min(int a, int b) -> int
+function min(float a, float b) -> float
+function max(int a, int b) -> int
+function max(float a, float b) -> float
+function clamp(int x, int min, int max) -> int
+function clamp(float x, float min, float max) -> float
+
+// 幂函数
+function pow(float x, float y) -> float
+function sqrt(float x) -> float
+function cbrt(float x) -> float
+function square(float x) -> float
+
+// 指数和对数
+function exp(float x) -> float
+function log(float x) -> float
+function log10(float x) -> float
+function log2(float x) -> float
+
+// 三角函数
+function sin(float angle) -> float
+function cos(float angle) -> float
+function tan(float angle) -> float
+function asin(float x) -> float
+function acos(float x) -> float
+function atan(float x) -> float
+function atan2(float y, float x) -> float
+
+// 双曲函数
+function sinh(float x) -> float
+function cosh(float x) -> float
+function tanh(float x) -> float
+
+// 舍入函数
+function floor(float x) -> int
+function ceil(float x) -> int
+function round(float x) -> int
+function trunc(float x) -> int
+
+// 随机数
+function random() -> float
+function random(int max) -> int
+function random(int min, int max) -> int
+function setSeed(uint32 seed) -> void
+
+// 统计函数
+function mean(float[] values) -> float
+function median(float[] values) -> float
+function mode(float[] values) -> float
+function variance(float[] values) -> float
+function deviation(float[] values) -> float
+
+// 向量数学
+struct Vector2 {
+    float x
+    float y
+}
+
+struct Vector3 {
+    float x
+    float y
+    float z
+}
+
+struct Vector4 {
+    float x
+    float y
+    float z
+    float w
+}
+
+// 矩阵数学
+struct Matrix2x2 {
+    float[2][2] data
+}
+
+struct Matrix3x3 {
+    float[3][3] data
+}
+
+struct Matrix4x4 {
+    float[4][4] data
+}
+
+// 向量函数
+function length(Vector2 v) -> float
+function length(Vector3 v) -> float
+function dot(Vector2 a, Vector2 b) -> float
+function dot(Vector3 a, Vector3 b) -> float
+function cross(Vector3 a, Vector3 b) -> Vector3
+function normalize(Vector2 v) -> Vector2
+function normalize(Vector3 v) -> Vector3
+
+// 矩阵函数
+function identity() -> Matrix4x4
+function translation(float x, float y, float z) -> Matrix4x4
+function rotationX(float angle) -> Matrix4x4
+function rotationY(float angle) -> Matrix4x4
+function rotationZ(float angle) -> Matrix4x4
+function scaling(float x, float y, float z) -> Matrix4x4
+function perspective(float fov, float aspect, float near, float far) -> Matrix4x4
+function lookAt(Vector3 eye, Vector3 target, Vector3 up) -> Matrix4x4

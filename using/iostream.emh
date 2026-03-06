@@ -1,0 +1,91 @@
+// iostream.emh
+// Emerging Input/Output Stream Header
+// Version 3.0
+// 使用: using "iostream.emh"
+
+// 输出命名空间
+namespace out {
+    // 基本输出
+    function print(string str) -> void
+    function print(int num) -> void
+    function print(uint num) -> void
+    function print(byte b) -> void
+    function print(bool b) -> void
+    function print(hex h) -> void
+    function print(ptr p) -> void
+    
+    // 带换行的输出
+    function println() -> void
+    function println(string str) -> void
+    function println(int num) -> void
+    function println(uint num) -> void
+    function println(byte b) -> void
+    function println(bool b) -> void
+    function println(hex h) -> void
+    function println(ptr p) -> void
+    
+    // 格式化输出
+    function printf(string format, ...) -> void
+    
+    // 颜色输出
+    function red(string str) -> void
+    function green(string str) -> void
+    function blue(string str) -> void
+    function yellow(string str) -> void
+    function cyan(string str) -> void
+    function magenta(string str) -> void
+    function white(string str) -> void
+    
+    // 带颜色的换行输出
+    function redln(string str) -> void
+    function greenln(string str) -> void
+    function blueln(string str) -> void
+    function yellowln(string str) -> void
+    function cyanln(string str) -> void
+    function magentaln(string str) -> void
+    function whiteln(string str) -> void
+}
+
+// 输入命名空间
+namespace in {
+    // 基本输入
+    function read() -> string
+    function readInt() -> int
+    function readChar() -> byte
+    function readLine() -> string
+    
+    // 带提示的输入
+    function prompt(string message) -> string
+    function promptInt(string message) -> int
+}
+
+// 控制台命名空间
+namespace console {
+    // 光标控制
+    function clear() -> void
+    function gotoxy(int x, int y) -> void
+    function getxy() -> (int x, int y)
+    
+    // 颜色控制
+    function setColor(int foreground, int background) -> void
+    function resetColor() -> void
+    
+    // 窗口控制
+    function setTitle(string title) -> void
+    function getTitle() -> string
+    function setSize(int width, int height) -> void
+    
+    // 光标可见性
+    function showCursor(bool visible) -> void
+}
+
+// 简化使用
+const endl = "\n"
+const tab = "\t"
+
+// 十六进制输出辅助
+struct hex {
+    uint value
+}
+
+function hex(uint value) -> hex
